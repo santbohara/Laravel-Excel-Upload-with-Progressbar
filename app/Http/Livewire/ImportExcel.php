@@ -5,10 +5,8 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Jobs\ProcessExcelImport;
-use App\Models\Settlement;
 use App\Models\Upload;
 use Illuminate\Support\Facades\Storage;
-use Maatwebsite\Excel\Facades\Excel;
 
 class ImportExcel extends Component
 {

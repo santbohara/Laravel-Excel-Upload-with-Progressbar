@@ -32,12 +32,12 @@
                                 <span>{{ $upload->file_name }}</span>
                                 <p class="text-gray-400">{{ $upload->uploaded_at }}</p>
                             </td>
-                            <?php
+                            @php
                                 $percentage = 0;
                                 if ($upload->total > 0) {
                                     $percentage = round($upload->current / ($upload->total / 100));
                                 }
-                            ?>
+                            @endphp
                             <td class="px-3 py-1 whitespace-nowrap text-gray-500">
                                 <div class="relative pt-1">
                                     <div class="flex mb-2 items-center justify-between">
@@ -65,8 +65,22 @@
                                 {{ $upload->total }}
                             </td>
                             <td class="px-3 py-1 whitespace-nowrap">
+                                @php
+                                    if ($upload->status == 'failed'){
+                                        $theme = 'bg-red-100 text-red-800';
+                                    }
+                                    elseif ($upload->status == 'processing'){
+                                        $theme = 'bg-blue-100 text-blue-800';
+                                    }
+                                    elseif ($upload->status == 'finished'){
+                                        $theme = 'bg-green-100 text-green-800';
+                                    }
+                                    else{
+                                        $theme = 'bg-gray-100 text-gray-800';
+                                    }
+                                @endphp
                                 <span
-                                    class="px-3 inline-flex leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    class="px-3 inline-flex leading-5 font-semibold rounded-full {{ $theme }}">
                                     {{ ucfirst($upload->status) }}
                                 </span>
                             </td>

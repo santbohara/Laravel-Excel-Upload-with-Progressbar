@@ -13,6 +13,7 @@ use Maatwebsite\Excel\Events\BeforeImport;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
+use Maatwebsite\Excel\Events\ImportFailed;
 
 class PersonImport implements ToCollection, WithHeadingRow, WithBatchInserts, WithEvents, WithChunkReading, ShouldQueue
 {
